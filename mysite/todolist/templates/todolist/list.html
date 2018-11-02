@@ -1,0 +1,39 @@
+{% extends 'todolist/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h3>All you have to do</h3>
+  <br>
+            <table class="table table-bordered table-hover">
+    <thead>
+      <tr bgcolor="#CCCCFF">
+        <th>Title</th>
+        <th>Priority</th>
+        <th>Due_date</th>
+        <th>Completion</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+      <tr>
+        <td>{{ task.title }}</td>
+        <td>{{ task.priority}}</td>
+        <td>{{ task.due_date}}</td>
+        <td>{{ task.completed}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-md-12 text-right">
+    		<a href="/add/"><button type="button" class="btn btn-warning custom-button-width .navbar-right">Add</button></a>
+          <button type="button" class="btn btn-warning custom-button-width .navbar-right">Delete</button>
+          <button type="button" class="btn btn-warning custom-button-width .navbar-right">Edit</button>
+    	</div>
+  </div>
+</div>
+
+{% endblock %}
