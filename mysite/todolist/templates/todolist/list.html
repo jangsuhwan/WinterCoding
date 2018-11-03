@@ -4,12 +4,12 @@
 <style type="text/css">
   table{
   text-align:center;
-  }
+}
 </style>
 <div class="container-fluid">
     <h3>All you have to do</h3>
   <br>
-            <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover">
     <thead>
       <tr bgcolor="#CCCCFF">
         <th width="18%">Title</th>
@@ -19,30 +19,25 @@
         <th width="8%">Expired</th>
         <th width="8%">Completion</th>
         <th colspan="2" width="12%"></th>
-
       </tr>
     </thead>
     <tbody>
-
     {% for task in tasks %}
-
-
       <tr>
         <td>{{ task.title }}</a></td>
         <td>{{ task.description|slice:"200" }}</td>
         <td>{{ task.priority}}</td>
         <td>{{ task.due_date}}</td>
-        <td><font color="red">{{ task.expired}}</font>
-</td>
-        <td >{% if task.completed == False %}No{%else%}Yes{%endif%}</td>
-        <td ><form action="/delete/{{task.id}}/" method="POST">{% csrf_token %}<button type="submit" class="btn btn-danger custom-button-width .navbar-right">Delete</button></form>
+        <td><font color="red">{{ task.expired}}</font></td>
+        <td>{% if task.completed == False %}No{%else%}Yes{%endif%}</td>
+        <td><form action="/delete/{{task.id}}/" method="POST">{% csrf_token %}
+            <button type="submit" class="btn btn-danger custom-button-width .navbar-right">Delete</button></form>
         </td>
-        <td><form action="/edit/{{task.id}}/" method="POST">{% csrf_token %}<button type="submit" class="btn btn-success dcustom-button-width .navbar-right">Edit</button></form>
+        <td><form action="/edit/{{task.id}}/" method="POST">{% csrf_token %}
+            <button type="submit" class="btn btn-success dcustom-button-width .navbar-right">Edit</button></form>
         </td>
       </tr>
     {% endfor %}
-
-
     </tbody>
   </table>
 </div>
@@ -53,5 +48,4 @@
     	</div>
   </div>
 </div>
-
 {% endblock %}
