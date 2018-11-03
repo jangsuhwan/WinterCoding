@@ -3,33 +3,36 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <style>
   div.col-md-6 {
   padding-left:30px;
 }
 </style>
+
+<p id="1d">{{task_id}}</p>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-      <form action="/update/{{task_id}}/" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+      <form name = "saveform" method="post" enctype="multipart/form-data" class="form-horizontal" role="form" id="save_form" >
         {% csrf_token %}
         {{ form.as_p }}
         <fieldset>
           <legend>Task</legend>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Title</label>
+            <label class="col-sm-2 control-label">Title</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="title" value="{{task.title}}">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Description</label>
+            <label class="col-sm-2 control-label">Description</label>
             <div class="col-sm-10">
                 <textarea class="form-control" rows="12" name="description" value="{{task.description}}">{{task.description}}</textarea>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Priority</label>
+            <label class="col-sm-2 control-label">Priority</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="priority" value="{{task.priority}}">
             </div>
@@ -49,7 +52,7 @@
             <div class="col-sm-offset-2 col-sm-10">
               <div class="pull-right">
                 <button type="button" class="btn btn-primary" onclick="history.back()">Cancel</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary" id="saveButton">Save</button>
               </div>
             </div>
           </div>
@@ -59,4 +62,14 @@
 </div>
 </div>
 </div>
+<script>
+var parts = window.location.href.indexOf("edit")+5;
+  var str_task_id = window.location.href.substr(parts);
+  var task_id = "/update/"+str_task_id.substr(0, str_task_id.length-1)+"/";
+$("#saveButton").on("click", function(e){
+    e.preventDefault();
+    $('#save_form').attr('action', task_id).submit();
+});
+
+ </script>
 {% endblock %}

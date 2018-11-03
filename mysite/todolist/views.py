@@ -36,5 +36,9 @@ def edit(request, task_id):
     return render (request, 'todolist/edit.html', context)
 
 def update(request, task_id):
-    List.objects.filter(id=task_id).update(**request.data)
-    return home(request)
+    instance = List.objects.get(id=task_id)
+    form = ListForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        return  home(request)
+    return  home(request)
