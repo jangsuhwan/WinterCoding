@@ -1,9 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import List
 from .forms import ListForm
 import datetime
-from django.contrib import messages
-from django.http import HttpResponseRedirect, HttpResponse
 
 def home(request):
     tasks = List.objects.all()
@@ -24,8 +22,6 @@ def create(request):
         if form.is_valid():
             form.save()
         return home(request)
-    else:
-        form = ListForm()
 
     return home(request)
 
@@ -35,7 +31,7 @@ def delete(request, task_id):
     return home(request)
 
 def edit(request, task_id):
-    task = List.objects.get(id = task_id)
+    task = List.objects.get(id=task_id)
     context = {'task' : task}
     return render (request, 'todolist/edit.html', context)
 
