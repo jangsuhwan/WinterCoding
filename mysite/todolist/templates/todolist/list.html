@@ -1,26 +1,31 @@
 {% extends 'todolist/base.html' %}
 
 {% block content %}
-
 <div class="container-fluid">
     <h3>All you have to do</h3>
   <br>
             <table class="table table-bordered table-hover">
     <thead>
       <tr bgcolor="#CCCCFF">
-        <th>Title</th>
-        <th>Priority</th>
-        <th>Due_date</th>
-        <th>Completion</th>
+        <th width="15%">Title</th>
+        <th>description</th>
+        <th width="10%">Priority</th>
+        <th width="10%">Due_date</th>
+        <th width="10%">Completion</th>
+        <th width="10%"></th>
       </tr>
     </thead>
     <tbody>
     {% for task in tasks %}
       <tr>
-        <td>{{ task.title }}</td>
+        <td>{{ task.title }}</a></td>
+        <td>{{ task.description|slice:"200" }}</td>
         <td>{{ task.priority}}</td>
         <td>{{ task.due_date}}</td>
         <td>{{ task.completed}}</td>
+        <td><form action="/delete/{{task.id}}/" method="POST">{% csrf_token %}<button type="submit" class="btn btn-danger custom-button-width .navbar-right">Delete</button></form></td>
+
+
       </tr>
     {% endfor %}
     </tbody>

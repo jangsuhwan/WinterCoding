@@ -18,7 +18,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-      <form action="/create/" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+      <form action="/update/" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
         {% csrf_token %}
         {{ form.as_p }}
         <fieldset>

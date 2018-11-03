@@ -11,3 +11,5 @@ class List(models.Model):
     def __str__(self):
         return self.title + ' l ' + str(self.completed)
 
+    class Meta:
+        ordering=['priority', 'due_date', 'title']
