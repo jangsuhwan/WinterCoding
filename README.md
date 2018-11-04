@@ -8,16 +8,16 @@ task list page : ![ad1](https://user-images.githubusercontent.com/28725891/47963
 task add page : ![ad - 1](https://user-images.githubusercontent.com/28725891/47963270-f2d5fc80-e06c-11e8-97eb-4cd701482f3d.jpg)
 
 ## Installation
-  ### pip install -r requirements.txt
-  ### python manage.py migrate
-  ### python manage.py runserver(default: http://localhost:8000)
+  - ### pip install -r requirements.txt
+  - ### python manage.py migrate
+  - ### python manage.py runserver(default: http://localhost:8000)
 
 ## feature
-  ### task add, edit, delete
-  ### properties of task(* : required)
-    #### *Title
-    #### *Description
-    #### *Priority
-    #### Due Date
-    #### Completion
-  ### print message on list page when uncompleted task is outdated
+  - ### task add, edit, delete
+  - ### properties of task(* : required)
+    - #### *Title
+    - #### *Description
+    - #### *Priority
+    - #### Due Date
+    - #### Completion
+  - ### print message on list page when uncompleted task is outdated
