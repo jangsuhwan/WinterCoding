@@ -28,7 +28,7 @@
         <td>{{ task.description|slice:"200" }}</td>
         <td>{{ task.priority}}</td>
         <td>{{ task.due_date}}</td>
-        <td><font color="red">{{ task.expired}}</font></td>
+        <td><font color="red">{% if task.completed == False %}{{ task.expired}}{%else%}{%endif%}</font></td>
         <td>{% if task.completed == False %}No{%else%}Yes{%endif%}</td>
         <td><form action="/delete/{{task.id}}/" method="POST">{% csrf_token %}
             <button type="submit" class="btn btn-danger custom-button-width .navbar-right">Delete</button></form>
