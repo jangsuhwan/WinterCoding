@@ -9,5 +9,4 @@ urlpatterns = [
     path('edit/<int:task_id>/', views.edit, name="edit"),
     path('delete/<int:task_id>/', views.delete, name="delete"),
     path('update/<int:task_id>/', views.update, name="update"),
-   # path('create/todolist/list.html', ''),
 ]
