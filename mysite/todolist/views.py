@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import List
 from .forms import ListForm
 import datetime
@@ -21,14 +21,13 @@ def create(request):
         form = ListForm(request.POST)
         if form.is_valid():
             form.save()
-        return home(request)
-
-    return home(request)
+            return redirect('/')
+    return redirect('/')
 
 def delete(request, task_id):
     task = List.objects.get(id=task_id)
     task.delete()
-    return home(request)
+    return redirect('/')
 
 def edit(request, task_id):
     task = List.objects.get(id=task_id)
@@ -40,5 +39,5 @@ def update(request, task_id):
     form = ListForm(request.POST or None, instance=instance)
     if form.is_valid():
         form.save()
-        return  home(request)
-    return  home(request)
+        return redirect('/')
+    return redirect('/')
